@@ -1,0 +1,6 @@
+#imageEx8{
+    background:url('image1.png') no-repeat top left;
+    }
+#monthOnly .ui-datepicker-calendar {
+    display: none;
+    }

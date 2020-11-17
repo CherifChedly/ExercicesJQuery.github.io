@@ -1,0 +1,4 @@
+7 
+8
+
+J'ai mis la partie jquery de l'exercice 10 en commentaire. Il faut la remettre en mode normal pour le test.

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Introduction au langage HTML">
+    </meta>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <title>Atelier4</title>
+</head>
+
+<body>
+    <form method="post" action="">
+        <h4>Exercice 1 :</h4>
+        <span id="element">Elément</span>
+        <br>
+        <input type="checkbox" id="visible" name="visible" checked>
+        <label for="visible">L'élément est visible</label>
+
+        <h4>Exercice 2 :</h4>
+        <input type="button" id="ex21" value="Insert après ma classe">
+        <input type="button" id="ex22" value="Déplacer le span dans le dom">
+        <input type="button" id="ex23" value="Inserer élément dans le dom avant le DIV">
+        <input type="button" id="ex24" value="Inserer un élément à la fin de DIV">
+        <input type="button" id="ex25" value="Insert un élément dans le div">
+        <br><br>
+        <span id="spanex2" class='ma_classe'>-- Mon premier span ma_classe --</span>
+        <span id="spanex2" class='ma_classe'>-- Mon deuxième span ma_classe --</span>
+        <div id="mon_div" style="border:1px solid gray"> Ce DIV est initialement dans le DOM en fin de fichier </div>
+
+        <h4>Exercice 3 :</h4>
+        <textarea id="mon_textarea"> Mon texte ici </textarea>
+        <input type="button" value="Afficher le texte" id="ex3" />
+
+        <h4>Exercice 4 :</h4>
+        <input type="texte" id="no_paste" />
+
+        <h4>Exercice 5 :</h4>
+        <input type='text' name='cache-texte' class='only_alpha_num' id="no_paste_ex5" />
+
+        <h4>Exercice 6 :</h4>
+        <img id="mon_image" src="image1.png" alt="survolez cette image " />
+
+        <h4>Exercice 9 :</h4>
+        <img src="image2.png" id="ex9" alt="Opacité" />
+
+        <h4>Exercice 10 :</h4>
+        <img src="image1.png" id="ex10" alt="Détection de click" />
+
+        <h4>Exercice 11 :</h4>
+        <img src="image1.png" id="ex11" alt="image selon la date" />
+
+        <h4>Exercice 12 :</h4>
+        <div class="maclassegenerale "> mon 1</div>
+        <div class="maclassegenerale maclasseaexclure"> mon 2</div>
+        <div class="maclassegenerale"> mon 3</div>
+        <div class="maclassegenerale maclasseaexclure"> mon 4</div>
+
+        <h4>Exercice 13 :</h4>
+        <input type="text" id="nb_element_de_class">
+
+        <h4>Exercice 14 :</h4>
+        <input type="text" id="op_des_styles_exprimés_en_px">
+
+        <h4>Exercice 15 :</h4>
+        <textarea class="elementtextareaNonEditable">Non modifiable</textarea>
+
+        <h4>Exercice 17 :</h4>
+        <div id="redirection">
+            Cliquez moi pour déplacer la page vers l'élément d'identifiant #element
+        </div>
+        <div id="monancre"> Mon ancre</div>
+
+        <h4>Exercice 19 :</h4>
+        <input type="text" id="Tous_les_éléments_qui_commencent_par_une_voyelle">
+
+        <h4>Exercice 20 : </h4>
+        <input type="text" id="ex20">
+
+        <h4>Exercice 23 :</h4>
+        <div id="div_pere">
+            <div class="div_fils"></div>
+            <div class="div_fils"></div>
+            <div class="div_fils"></div>
+        </div>
+
+        <h4>Exercice 24 :</h4>
+        <div id="parent">
+            <div> A </div>
+            <div> B </div>
+            <div id="mondivEx24"> C </div>
+            <div> D </div>
+            <div>
+
+                <h4>Exercice 28 :</h4>
+                <img src="image1.png" id="ex271" alt="Opacité" />
+                <img src="image1.png" id="ex272" alt="Opacité" />
+
+                <h4>Exercice 30 :</h4>
+                <img src="image1.png" id="ex30" alt="Clignoter" />
+
+    </form>
+
+
+
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        //exercice 1
+        $("#visible").change(function () {
+            $("#element").toggle();
+            if ($("#element").is(":visible")) { alert("L'élément est visible"); }
+            if ($("#element").is(":hidden")) { alert("L'élément est caché"); }
+        })
+
+        //exercice 2
+        $("#ex21").click(function () {
+            $("<p>!Je suis les éléments de classe ma_classe!</p>").insertAfter('.ma_classe');
+        })
+        $("#ex22").click(function () {
+            $("#spanex2").insertAfter('#mon_div');
+        })
+        $("#ex23").click(function () {
+            $("<p>Un petit texte à insérer dans le DOM juste avant mon_div</p>").insertBefore('#mon_div');
+        })
+        $("#ex24").click(function () {
+            $("#mon_div").append("<p>** Je mets ça en fin de DIV **</p>");
+        })
+        $("#ex25").click(function () {
+            $("#mon_div").prepend("<p>++ Tiens je rajoute ça en début de div ++</p>");;
+        })
+
+        //exercice 3
+        $("#ex3").click(function () {
+            alert("Le texte contenu dans le textarea est " + $("#mon_textarea").val() + " mais je vais lui rajouter une série de XXXXXXXX en fin de texte!");
+            $("#mon_textarea").val($("#mon_textarea").val() + 'XXXXXXXX')
+        });
+
+        //exercice 6
+        $("#mon_image").hover(
+            function () {
+                $(this).attr('src', 'image1.png');
+            },
+            function () {
+                $(this).attr('src', 'image2.png');
+            });
+
+        //exercice 9
+        $('#ex9').hover(
+            function () { $(this).animate({ opacity: '.75' }); },
+            function () { $(this).animate({ opacity: '1' }); }
+        );
+        /*
+                //exercice 10
+                $('html').click(function(event){
+                    if(event.target.id == 'ex10') {
+                    alert ("j'ai cliqué sur mon élément");
+                    } else {
+                    alert ("j'ai cliqué à l'extérieur de mon élément");
+                }
+                });*/
+
+        //exercice 11
+        var today = new Date();
+        var ladate = Date.parse(today);
+        var lannee = today.getFullYear();
+        var dateprintemps = Date.parse(new Date(lannee, 2, 21));
+        var dateete = Date.parse(new Date(lannee, 5, 21));
+        var dateautomne = Date.parse(new Date(lannee, 8, 21));
+        var datehiver = Date.parse(new Date(lannee, 11, 21));
+        if (ladate >= dateprintemps && ladate < dateete) {
+            $("#ex11").css({ backgroundImage: "url('image1.png')" });
+        }
+        else if (ladate >= dateete && ladate < dateautomne) {
+            $("#ex11").css({ backgroundImage: "url('image2.png')" });
+        }
+        else if (ladate >= dateautomne && ladate < datehiver) {
+            $("#ex11").css({ backgroundImage: "url('image1.png')" });
+        }
+        else if (ladate >= datehiver || ladate < dateprintemps) {
+            $("#ex11").css({ backgroundImage: "url('image2.png')" });
+        }
+
+
+
+
+        //execice 20
+        $('#ex20').keyup(function (e) {
+            if (e.keyCode == 13) {
+                alert('Hey ! Tu as appuyé sur la touche entrée !!');
+            }
+        });
+
+
+        //exercice 22
+        var new_elementex22 = jQuery('<div id="new_elt_ex22">Insertion avec JQuery de ex 22</div>');
+        new_elementex22.css({
+            background: 'gray',
+            width: '200px',
+            height: '30px',
+            padding: '3px'
+        });
+        $('body').append(new_elementex22);
+
+        //exercice 23
+        $("#div_pere").click(
+            function () {
+                alert('click pere!');
+                $(this).children('div:first').click();
+            }
+        );
+        $(".div_fils").click(
+            function (event) {
+                alert('click fils!');
+                //mettre ici l'évenement sur le fils
+                event.stopPropagation();
+                //l'événement click n'est plus transmis au père 
+            }
+        );
+
+
+        //exercice 24
+        /* $("#mondivEx24").siblings('div').each(function(i){
+              alert (i +' : '+$(this).html());
+         });*/
+
+
+        //exercice 25
+        $("#mondiv").mouseup();
+
+        //exercice 26
+        $(".maclasseaexclure").each(function () {
+            $(this).css({ "background": "red" });
+        });
+
+
+        //exercice 28
+        $("#ex281").fadeOut('slow').queue(function () {
+            $("#ex282").fadeIn('slow');
+            $(this).dequeue();
+        });
+
+        //exercice 30
+        $(document).ready(function () {
+            function FaireClignoterImage() { $("#ex30").fadeOut(200).delay(300).fadeIn(200); }
+            setInterval(FaireClignoterImage, 700);
+        });
+
+
+
+
+
+    }
+    )
+
+    //exercice 4
+    document.getElementById('no_paste').addEventListener('keydown', function (foo) {
+        if (foo.keyCode == 86) {
+            alert('Le collage de texte n est pas autorisé !');
+            foo.preventDefault();
+        }
+    })
+
+    //exercice 5
+    function supprimer_dernier_caractere(elm) {
+        var val = $(elm).val();
+        var cursorPos = elm.selectionStart;
+        $(elm).val(
+            val.substr(0, cursorPos - 1) + // before cursor - 1
+            val.substr(cursorPos, val.length) // after cursor
+        )
+        elm.selectionStart = cursorPos - 1; // replace the cursor at the right place
+        elm.selectionEnd = cursorPos - 1;
+    }
+
+    $(document).ready(function () {
+        // Supprime le dernier caractère s'il n'est pas alphanumérique sur evt keyup
+        $('body').delegate('input.only_alpha_num', 'keyup', function () {
+            if (!$(this).val().match(/^[0-9a-z]*$/i)) // a-z et 0-9 uniquement
+                supprimer_dernier_caractere(this);
+        });
+
+
+        // Annulation du "coller" dans l'input texte auquel on a affecté l'identifiant "no_paste"
+        document.getElementById('no_paste').addEventListener('keydown',
+            function (foo) {
+                if (foo.keyCode == 86) {
+                    // alert('Vous avez copié du texte');
+                    foo.preventDefault();
+                }
+            });
+    })
+
+    //exercice 12
+    $('.maclassegenerale').not(".maclasseaexclure").css({ "background": "url(image1.png)  no-repeat 5px 5px" });
+
+    //exercice 13
+    var nb_element_de_class;
+    nb_element_de_class = $(".maclassegenerale").length;
+    $("#nb_element_de_class").val(nb_element_de_class);
+
+    //exercice 14
+    mavaleurEx14 = parseInt($("#ex10").css('height')) - parseInt($("#ex11").css('marginTop'));
+    $("#op_des_styles_exprimés_en_px").val(mavaleurEx14);
+
+    //exercice 15
+    $(".elementtextareaNonEditable").attr('readonly', 'readonly');
+
+    //exercice 16
+    $("#calendarEx16").fullCalendar;
+
+    //exercice 17
+    $(document).ready(function () {
+        $('#redirection').click(function () {
+            $('html,body').animate({ scrollTop: $("#element").offset().top }, 'slow');
+        });
+    })
+
+    //exercice 19
+    jQuery.expr[':'].regex = function (elem, index, match) {
+        var matchParams = match[3].split(','),
+            validLabels = /^(data|css):/,
+            attr = {
+                method: matchParams[0].match(validLabels) ?
+                    matchParams[0].split(':')[0] : 'attr',
+                property: matchParams.shift().replace(validLabels, '')
+            },
+            regexFlags = 'ig',
+            regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g, ''), regexFlags);
+        return regex.test(jQuery(elem)[attr.method](attr.property));
+        var Tous_les_éléments_qui_commencent_par_une_voyelle;
+        Tous_les_éléments_qui_commencent_par_une_voyelle = $(':regex(id,^[aeiou])');
+        $("#Tous_les_éléments_qui_commencent_par_une_voyelle").val(Tous_les_éléments_qui_commencent_par_une_voyelle);
+
+
+
+
+    }
+</script>
